@@ -46,25 +46,29 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       border: 3px solid #4CAF50;
     }
-    .github-link, .social-btn {
+    /* 通用按钮样式 */
+    .btn {
       display: inline-block;
       margin: 10px;
       padding: 10px 20px;
-      border-radius: 6px;
+      border-radius: 25px;
       font-weight: bold;
       text-decoration: none;
+      color: white;
       transition: background 0.3s;
     }
-    .github-link {
-      background-color: #24292e;
-      color: white;
-    }
+    /* GitHub 按钮 */
+    .github-link { background-color: #24292e; }
     .github-link:hover { background-color: #444; }
-    .social-btn {
-      background-color: crimson;
-      color: white;
-    }
-    .social-btn:hover { background-color: darkred; }
+
+    /* 小红书 按钮 */
+    .xiaohongshu-btn { background-color: crimson; }
+    .xiaohongshu-btn:hover { background-color: darkred; }
+
+    /* 知乎 按钮 */
+    .zhihu-btn { background-color: #0084ff; }
+    .zhihu-btn:hover { background-color: #0066cc; }
+
     #intro {
       margin-top: 20px;
       font-size: 18px;
@@ -103,9 +107,9 @@
 
   <!-- GitHub & 社交链接 -->
   <div id="about">
-    <a href="https://github.com/QilongZhao-86" target="_blank" class="github-link">🌐 Visit My GitHub</a>
-    <a href="https://www.xiaohongshu.com/user/profile/6205d034000000001000fbfa?xsec_token=ABaWpVU_4ZyQaMyZbdkmPuPWUnJM4LZ-6j56ynFfLKRZY%3D&xsec_source=pc_search" target="_blank" class="social-btn">📕 小红书</a>
-    <a href="https://www.zhihu.com/people/wu-li-da-shi-29-96" target="_blank" class="social-btn">❓ 知乎</a>
+    <a href="https://github.com/QilongZhao-86" target="_blank" class="btn github-link">🌐 Visit My GitHub</a>
+    <a href="https://www.xiaohongshu.com/user/profile/6205d034000000001000fbfa?xsec_token=ABaWpVU_4ZyQaMyZbdkmPuPWUnJM4LZ-6j56ynFfLKRZY%3D&xsec_source=pc_search" target="_blank" class="btn xiaohongshu-btn">📕 小红书</a>
+    <a href="https://www.zhihu.com/people/wu-li-da-shi-29-96" target="_blank" class="btn zhihu-btn">❓ 知乎</a>
   </div>
 
   <!-- 联系区 -->
