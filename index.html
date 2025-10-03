@@ -2,163 +2,124 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>个人主页</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-    /* 页面背景（替换为你自己的图片文件） */
     body {
-      margin: 0;
+       margin: 0;
       font-family: Arial, sans-serif;
       background: url('background.jpg') no-repeat center center fixed;
       background-size: cover;
       color: #222;
     }
-
-    /* 顶部导航 */
-    nav {
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 20px;
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(0,0,0,0.45);
-      color: white;
+      padding: 10px 30px;
+      background: rgba(0, 0, 0, 0.6);
     }
-    nav .left a, nav .right a { color: white; text-decoration: none; margin-right: 12px; font-weight: 600; }
-    .language-switch button {
-      margin-left: 6px;
-      padding: 6px 10px;
-      border-radius: 5px;
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    .lang-switch {
+      margin-left: auto;
+    }
+    .lang-switch button {
+      margin: 0 3px;
+      padding: 5px 10px;
       border: none;
-      background: rgba(255,255,255,0.12);
+      border-radius: 5px;
+      background: #ff4757;
       color: white;
       cursor: pointer;
     }
-    .language-switch button:hover { background: rgba(255,255,255,0.22); }
-
-    /* 中央卡片（确保文字可读） */
-    .card {
-      max-width: 900px;
-      margin: 110px auto 60px; /* 顶部留出导航高度 */
-      background: rgba(255,255,255,0.95);
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.25);
-      color: #111;
-      text-align: center;
+    .container {
+      margin-top: 120px;
     }
-
     .avatar {
       width: 150px;
       height: 150px;
       border-radius: 50%;
-      object-fit: cover;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-      border: 4px solid rgba(76,175,80,0.9);
-      margin-bottom: 16px;
+      margin-bottom: 20px;
+      border: 3px solid white;
     }
-
-    h1 { margin: 8px 0 6px; font-size: 28px; }
-    p.intro { font-size: 16px; line-height: 1.7; color: #222; margin: 12px 0 18px; }
-
-    .btns a {
+    h1 {
+      font-size: 2.5rem;
+    }
+    p {
+      font-size: 1.2rem;
+    }
+    .buttons {
+      margin-top: 20px;
+    }
+    .buttons a {
       display: inline-block;
-      margin: 8px;
-      padding: 10px 18px;
+      margin: 10px;
+      padding: 10px 20px;
       border-radius: 8px;
       text-decoration: none;
-      font-weight: 700;
       color: white;
+      font-weight: bold;
     }
-    .github-btn { background:#24292e; }
-    .xhs-btn { background:#ff2442; }
-    .zhihu-btn { background:#0084ff; }
-
-    /* 小屏适配 */
-    @media (max-width: 560px){
-      .card { margin: 120px 12px; padding: 20px; }
-      .avatar { width: 120px; height: 120px; }
+    .xiaohongshu {
+      background-color: #ff2442; /* 小红书红 */
+    }
+    .zhihu {
+      background-color: #0084ff; /* 知乎蓝 */
+    }
+    .github {
+      background-color: #333; /* GitHub灰黑 */
     }
   </style>
 </head>
 <body>
-
-  <nav>
-    <div class="left">
-      <a href="#home">主页</a>
-      <a href="#about">关于</a>
-      <a href="#contact">联系</a>
+  <!-- 导航栏 -->
+  <div class="navbar">
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
     </div>
-    <div class="right language-switch" aria-label="language switch">
+    <div class="lang-switch">
       <button onclick="setLang('zh')">中文</button>
-      <button onclick="setLang('en')">English</button>
+      <button onclick="setLang('en')">EN</button>
       <button onclick="setLang('jp')">日本語</button>
     </div>
-  </nav>
+  </div>
 
-  <div class="card" id="home">
-    <img src="avatar.jpg" alt="头像" class="avatar" id="avatar">
+  <!-- 内容区 -->
+  <div class="container">
+    <img src="avatar.jpg" alt="头像" class="avatar">
     <h1 id="title">个人主页</h1>
-    <p id="welcome" style="font-size:18px; margin:6px 0 14px;">我是高能的核聚变</p>
+    <p id="welcome">🟥 我是高能的核聚变</p>
 
-    <p id="intro" class="intro">
-      🎓 大连理工大学 · 数字媒体技术-本科生<br>
-      🔬 研究方向：图像处理 · 大模型 · 具身智能 · 三维重建<br>
-      📸 兴趣爱好：摄影 · 数学 · 交通 · 教育 · 编程
-    </p>
-
-    <div class="btns" id="contact">
-      <!-- GitHub 按钮（不随语言切换） -->
-      <a class="github-btn" href="https://github.com/QilongZhao-86" target="_blank" rel="noopener noreferrer">🌐 GitHub</a>
-
-      <!-- 小红书：使用简化稳定链接（token 会过期且可能导致跳转问题） -->
-      <a id="xhs-btn" class="xhs-btn" href="https://www.xiaohongshu.com/user/profile/6205d034000000001000fbfa" target="_blank" rel="noopener noreferrer">📕 小红书</a>
-
-      <!-- 知乎 -->
-      <a id="zhihu-btn" class="zhihu-btn" href="https://www.zhihu.com/people/wu-li-da-shi-29-96" target="_blank" rel="noopener noreferrer">📝 知乎</a>
+    <div class="buttons">
+      <a href="https://github.com/QilongZhao-86" target="_blank" class="github">GitHub</a>
+      <a href="https://www.xiaohongshu.com/user/profile/6205d034000000001000fbfa?xsec_token=ABaWpVU_4ZyQaMyZbdkmPuPWUnJM4LZ-6j56ynFfLKRZY%3D&xsec_source=pc_search" 
+         target="_blank" class="xiaohongshu">小红书</a>
+      <a href="https://www.zhihu.com/people/wu-li-da-shi-29-96" target="_blank" class="zhihu">知乎</a>
     </div>
   </div>
 
   <script>
-    /* 多语言内容（包含按钮文字） */
-    const content = {
-      zh: {
-        title: "个人主页",
-        welcome: "我是高能的核聚变",
-        intro: "🎓 大连理工大学 · 数字媒体技术-本科生<br>🔬 研究方向：图像处理 · 大模型 · 具身智能 · 三维重建<br>📸 兴趣爱好：摄影 · 数学 · 交通 · 教育 · 编程",
-        xhsText: "📕 小红书",
-        zhihuText: "📝 知乎"
-      },
-      en: {
-        title: "Personal Homepage",
-        welcome: "I am High-Energy Nuclear Fusion",
-        intro: "🎓 Dalian University of Technology · Undergraduate in Digital Media Technology<br>🔬 Research: Image Processing · Large Models · Embodied Intelligence · 3D Reconstruction<br>📸 Interests: Photography · Mathematics · Transportation · Education · Coding",
-        xhsText: "📕 Xiaohongshu",
-        zhihuText: "📝 Zhihu"
-      },
-      jp: {
-        title: "個人ホームページ",
-        welcome: "私はハイエネルギー核融合です",
-        intro: "🎓 大連理工大学 · デジタルメディア技術専攻 学部生<br>🔬 研究分野：画像処理 · 大規模モデル · エンボディドインテリジェンス · 3D再構築<br>📸 趣味：写真 · 数学 · 交通 · 教育 · コーディング",
-        xhsText: "📕 小紅書",
-        zhihuText: "📝 知乎"
-      }
+    const texts = {
+      zh: { title: "个人主页", welcome: "🟥 我是高能的核聚变" },
+      en: { title: "Personal Homepage", welcome: "🟥 I am High-Energy Nuclear Fusion" },
+      jp: { title: "個人ホームページ", welcome: "🟥 私は高エネルギーの核融合です" }
     };
 
-    function setLang(lang){
-      const c = content[lang] || content['zh'];
-      document.getElementById('title').innerText = c.title;
-      document.getElementById('welcome').innerText = c.welcome;
-      document.getElementById('intro').innerHTML = c.intro;
-      document.getElementById('xhs-btn').innerText = c.xhsText;
-      document.getElementById('zhihu-btn').innerText = c.zhihuText;
+    function setLang(lang) {
+      document.getElementById("title").innerText = texts[lang].title;
+      document.getElementById("welcome").innerText = texts[lang].welcome;
     }
-
-    // 默认中文
-    setLang('zh');
   </script>
 </body>
 </html>
