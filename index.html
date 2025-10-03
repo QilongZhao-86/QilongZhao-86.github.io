@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Homepage | 个人主页 | 個人ホームページ</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; line-height: 1.6; }
+    .lang { display: none; }
+    .active { display: block; }
+    .switch { margin-bottom: 20px; }
+    button { margin-right: 10px; padding: 6px 12px; cursor: pointer; border-radius: 6px; border: 1px solid #ccc; }
+    button:hover { background-color: #f0f0f0; }
+  </style>
+</head>
+<body>
+
+  <!-- 语言切换按钮 -->
+  <div class="switch">
+    <button onclick="setLang('en')">English</button>
+    <button onclick="setLang('zh')">中文</button>
+    <button onclick="setLang('jp')">日本語</button>
+  </div>
+
+  <!-- 英文版 -->
+  <div id="en" class="lang active">
+    <h1>Hi, I'm PowerNuclear 👋</h1>
+    <p>
+      🎓 Undergraduate in Digital Media Technology at Dalian University of Technology.<br>
+      🔬 Research interests: Image Processing, Large Models, Embodied Intelligence, 3D Reconstruction.<br>
+      📷 Passionate about Photography, Mathematics, Transportation, and Education.<br>
+      🌐 Welcome to my academic homepage!
+    </p>
+  </div>
+
+  <!-- 中文版 -->
+  <div id="zh" class="lang">
+    <h1>你好，我是 PowerNuclear 👋</h1>
+    <p>
+      🎓 大连理工大学数字媒体技术专业本科生。<br>
+      🔬 研究方向：图像处理、大模型、具身智能、三维重建。<br>
+      📷 兴趣爱好：摄影、数学、交通、教育。<br>
+      🌐 欢迎访问我的学术主页！
+    </p>
+  </div>
+
+  <!-- 日文版 -->
+  <div id="jp" class="lang">
+    <h1>こんにちは、PowerNuclearです 👋</h1>
+    <p>
+      🎓 大連理工大学 デジタルメディア技術専攻 学部生。<br>
+      🔬 研究分野：画像処理、大規模モデル、エンボディードAI、三次元再構築。<br>
+      📷 趣味：写真、数学、交通、教育。<br>
+      🌐 私の学術ホームページへようこそ！
+    </p>
+  </div>
+
+  <script>
+    function setLang(lang) {
+      document.querySelectorAll('.lang').forEach(el => el.classList.remove('active'));
+      document.getElementById(lang).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
