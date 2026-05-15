@@ -38,7 +38,6 @@
       text-decoration: underline;
     }
 
-    /* 顶部导航栏 */
     .navbar {
       position: sticky;
       top: 0;
@@ -95,7 +94,6 @@
       background: var(--light-bg);
     }
 
-    /* 主体布局 */
     .container {
       max-width: 1100px;
       margin: 0 auto;
@@ -105,7 +103,6 @@
       gap: 44px;
     }
 
-    /* 左侧个人信息栏 */
     .sidebar {
       position: sticky;
       top: 86px;
@@ -192,7 +189,6 @@
       word-break: break-all;
     }
 
-    /* 右侧内容 */
     .main {
       min-width: 0;
     }
@@ -219,11 +215,6 @@
       font-size: 16px;
       color: #333;
       margin-top: 0;
-    }
-
-    .highlight {
-      color: var(--primary-dark);
-      font-weight: 650;
     }
 
     .tag-list {
@@ -263,7 +254,8 @@
       color: #333;
     }
 
-    .pub {
+    .pub,
+    .news-card {
       padding: 14px 16px;
       background: var(--light-bg);
       border: 1px solid var(--border);
@@ -271,15 +263,50 @@
       margin-bottom: 14px;
     }
 
-    .pub-title {
+    .pub-title,
+    .news-title {
       font-weight: 700;
       color: #111;
     }
 
     .pub-authors,
-    .pub-venue {
+    .pub-venue,
+    .news-meta {
       color: var(--muted);
       font-size: 14px;
+    }
+
+    .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .overview-box,
+    .news-media-box {
+      margin-top: 14px;
+      border: 1px dashed var(--border);
+      background: #fff;
+      border-radius: 12px;
+      padding: 12px;
+    }
+
+    .overview-img,
+    .news-img {
+      display: block;
+      width: 100%;
+      max-height: 360px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: var(--light-bg);
+    }
+
+    .placeholder-note {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 13px;
     }
 
     .footer {
@@ -315,7 +342,6 @@
 </head>
 
 <body>
-  <!-- 顶部导航栏 -->
   <header class="navbar">
     <div class="nav-inner">
       <div class="nav-name">Qilong Zhao</div>
@@ -325,6 +351,8 @@
         <a href="#research" id="nav-research">Research</a>
         <a href="#projects" id="nav-projects">Projects</a>
         <a href="#publications" id="nav-publications">Publications</a>
+        <a href="#news" id="nav-news">News</a>
+        <a href="#education" id="nav-education">Education</a>
         <a href="#contact" id="nav-contact">Contact</a>
 
         <div class="lang-group">
@@ -337,12 +365,11 @@
   </header>
 
   <main class="container">
-    <!-- 左侧个人信息 -->
     <aside class="sidebar">
       <img src="avatar.jpg" alt="Qilong Zhao" class="avatar" />
 
       <h1 class="name" id="name">赵琦隆</h1>
-      <div class="subtitle" id="subtitle">本科 / 数字媒体技术</div>
+      <div class="subtitle" id="subtitle">本科生 / 数字媒体技术</div>
 
       <div class="affiliation" id="affiliation">
         大连理工大学<br />
@@ -368,117 +395,141 @@
       </div>
     </aside>
 
-    <!-- 右侧主页内容 -->
     <section class="main">
-      <!-- About -->
       <section class="section" id="about">
         <h2 class="section-title" id="about-title">About Me</h2>
 
         <p class="lead" id="about-text">
           我是大连理工大学数字媒体技术专业本科生，主要关注计算机视觉、多模态大模型以及具身智能方向。
-          目前的研究兴趣集中在如何利用基础模型、参数高效微调方法和退化感知训练策略，提升模型在复杂视觉场景中的鲁棒感知能力。
         </p>
 
         <p class="lead" id="about-text-2">
-          兴趣：摄影、足球。
+          除科研外，我也长期关注摄影、数学、足球。欢迎相同兴趣的同志联系我！
         </p>
       </section>
 
-      <!-- Research Interests -->
       <section class="section" id="research">
         <h2 class="section-title" id="research-title">Research Interests</h2>
 
         <div class="tag-list" id="research-tags">
-          <span class="tag">Infrared Image Perception</span>
-          <span class="tag">Small Target Detection</span>
-          <span class="tag">Image Processing</span>
-          <span class="tag">Vision-Language Models</span>
-          <span class="tag">Parameter-Efficient Fine-Tuning</span>
+          <span class="tag">Computer Vision</span>
+          <span class="tag">Multimodal Foundation Models</span>
           <span class="tag">Embodied AI</span>
-          <span class="tag">3D Reconstruction</span>
+          <span class="tag">Infrared Visual Perception</span>
+          <span class="tag">Parameter-Efficient Fine-Tuning</span>
         </div>
       </section>
 
-      <!-- Projects -->
       <section class="section" id="projects">
-        <h2 class="section-title" id="projects-title">Selected Projects</h2>
+        <h2 class="section-title" id="projects-title">Selected Project</h2>
 
         <div class="item">
           <div class="item-title" id="project1-title">
-            Degradation-Aware Adaptation for Infrared Perception
+            DAPEF: Degradation-Aware Parameter-Efficient Adaptation for Infrared Visual Perception
           </div>
           <div class="item-meta" id="project1-meta">
-            Computer Vision / Infrared Perception / PEFT
+            Computer Vision / Infrared Visual Perception / Parameter-Efficient Fine-Tuning
           </div>
           <p class="item-desc" id="project1-desc">
-            研究面向红外图像感知任务的退化感知训练与参数高效微调方法，关注低信噪比、小目标、复杂背景和图像退化条件下的鲁棒视觉表征。
+            This project investigates degradation-aware parameter-efficient adaptation for infrared visual perception, aiming to improve robust perception under complex degradation conditions.
           </p>
-        </div>
 
-        <div class="item">
-          <div class="item-title" id="project2-title">
-            PEFT-based Chinese-CLIP System for Food Recognition and Recipe Retrieval
+          <div class="link-row">
+            <a id="project1-arxiv" href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank">
+              arXiv
+            </a>
           </div>
-          <div class="item-meta" id="project2-meta">
-            Vision-Language Retrieval / Chinese-CLIP / LoRA / Adapter
-          </div>
-          <p class="item-desc" id="project2-desc">
-            构建基于 Chinese-CLIP 的食物识别与菜谱检索系统，通过 LoRA、Adapter 等参数高效微调策略实现图文跨模态检索。
-          </p>
-        </div>
 
-        <div class="item">
-          <div class="item-title" id="project3-title">
-            Audio Quality Assessment and Data Filtering
+          <div class="overview-box">
+            <img id="project1-overview-img" class="overview-img" src="assets/dapef_overview.png" alt="DAPEF overview figure" />
+            <p class="placeholder-note" id="project1-overview-note">
+              Overview figure placeholder: replace <code>assets/dapef_overview.png</code> with the final overview image.
+            </p>
           </div>
-          <div class="item-meta" id="project3-meta">
-            Audio Processing / Quality Assessment / Data Filtering
-          </div>
-          <p class="item-desc" id="project3-desc">
-            探索音频质量评估、信噪比估计和降质数据筛选方法，用于构建更可靠的音频数据处理流程。
-          </p>
         </div>
       </section>
 
-      <!-- Publications -->
       <section class="section" id="publications">
         <h2 class="section-title" id="publications-title">Publications / Preprints</h2>
 
         <div class="pub">
           <div class="pub-title" id="pub1-title">
-            Manuscript on Efficient Adaptation for Infrared Vision
+            DAPEF: Degradation-Aware Parameter-Efficient Adaptation for Infrared Visual Perception
           </div>
+
           <div class="pub-authors" id="pub1-authors">
             Qilong Zhao, et al.
           </div>
+
           <div class="pub-venue" id="pub1-venue">
-            Under review / in preparation.
+            IEEE T-PAMI under-review.
+          </div>
+
+          <div class="link-row">
+            <a id="pub1-arxiv" href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank">
+              arXiv
+            </a>
           </div>
         </div>
-
-        <p class="item-desc" id="pub-note">
-          More publications and preprints will be updated soon.
-        </p>
       </section>
 
-      <!-- Education -->
+      <section class="section" id="news">
+        <h2 class="section-title" id="news-title">News</h2>
+
+        <div class="news-card">
+          <div class="news-meta" id="news1-date">2026</div>
+
+          <div class="news-title" id="news1-title">
+            Awarded Finalist in the 2026 MCM/ICM.
+          </div>
+
+          <p class="item-desc" id="news1-desc">
+            Our team received the Finalist Award in the 2026 Mathematical Contest in Modeling / Interdisciplinary Contest in Modeling.
+          </p>
+
+          <div class="link-row">
+            <a id="news1-paper-link" href="paper/mcm_icm_2026.pdf" target="_blank">
+              Paper
+            </a>
+          </div>
+
+          <div class="news-media-box">
+            <img id="news1-award-img" class="news-img" src="assets/mcm_icm_2026_award.jpg" alt="2026 MCM/ICM award photo" />
+            <p class="placeholder-note" id="news1-award-note">
+              Award photo placeholder: replace <code>assets/mcm_icm_2026_award.jpg</code> with the final award photo.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section class="section" id="education">
         <h2 class="section-title" id="education-title">Education</h2>
 
         <div class="item">
-          <div class="item-title" id="edu-title">
+          <div class="item-title" id="edu1-title">
             Dalian University of Technology
           </div>
-          <div class="item-meta" id="edu-meta">
-            B.Eng. in Digital Media Technology
+          <div class="item-meta" id="edu1-meta">
+            B.Eng. in Digital Media Technology, 2023.9–2027.6
           </div>
-          <p class="item-desc" id="edu-desc">
+          <p class="item-desc" id="edu1-desc">
             International School of Information and Software.
+          </p>
+        </div>
+
+        <div class="item">
+          <div class="item-title" id="edu2-title">
+            Shijiazhuang No.1 High School, East Campus
+          </div>
+          <div class="item-meta" id="edu2-meta">
+            High School, 2020.9–2023.6
+          </div>
+          <p class="item-desc" id="edu2-desc">
+            Shijiazhuang, Hebei, China.
           </p>
         </div>
       </section>
 
-      <!-- Contact -->
       <section class="section" id="contact">
         <h2 class="section-title" id="contact-title">Contact</h2>
 
@@ -488,7 +539,7 @@
 
         <p>
           Email:
-          <a href="mailto:1172178231@qq.com">1172178231@qq.com</a>
+          <a href="mailto:zqilong160@gmail.com">zqilong160@gmail.com</a>
         </p>
 
         <p>
@@ -514,50 +565,55 @@
 
         navAbout: "关于我",
         navResearch: "研究方向",
-        navProjects: "项目经历",
+        navProjects: "代表项目",
         navPublications: "论文",
+        navNews: "新闻",
+        navEducation: "教育经历",
         navContact: "联系",
 
         aboutTitle: "关于我",
         aboutText:
-          "我是大连理工大学数字媒体技术专业本科生，主要关注计算机视觉、红外图像感知、多模态大模型以及具身智能方向。目前的研究兴趣集中在如何利用基础模型、参数高效微调方法和退化感知训练策略，提升模型在复杂视觉场景中的鲁棒感知能力。",
+          "我是大连理工大学数字媒体技术专业本科生，主要关注计算机视觉、多模态大模型以及具身智能方向。",
         aboutText2:
-          "除科研外，我也长期关注摄影、数学、交通系统、教育和编程，并希望将视觉感知、多模态理解与真实场景智能系统结合起来。",
+          "除科研外，我也长期关注摄影、数学、足球。欢迎相同兴趣的同志联系我！",
 
         researchTitle: "研究方向",
         researchTags: [
           "计算机视觉",
+          "多模态大模型",
           "具身智能",
-          "三维重建"
+          "红外视觉感知",
+          "参数高效微调"
         ],
 
         projectsTitle: "代表项目",
-
-        project1Title: "面向红外感知的退化感知适配方法",
-        project1Meta: "计算机视觉 / 红外感知 / 参数高效微调",
+        project1Title: "DAPEF: Degradation-Aware Parameter-Efficient Adaptation for Infrared Visual Perception",
+        project1Meta: "计算机视觉 / 红外视觉感知 / 参数高效微调",
         project1Desc:
-          "研究面向红外图像感知任务的退化感知训练与参数高效微调方法，关注低信噪比、小目标、复杂背景和图像退化条件下的鲁棒视觉表征。",
-
-        project2Title: "基于 PEFT 微调 Chinese-CLIP 的食物识别与菜谱检索系统",
-        project2Meta: "视觉语言检索 / Chinese-CLIP / LoRA / Adapter",
-        project2Desc:
-          "构建基于 Chinese-CLIP 的食物识别与菜谱检索系统，通过 LoRA、Adapter 等参数高效微调策略实现图文跨模态检索。",
-
-        project3Title: "音频质量评估与数据筛选流程",
-        project3Meta: "音频处理 / 质量评估 / 数据筛选",
-        project3Desc:
-          "探索音频质量评估、信噪比估计和降质数据筛选方法，用于构建更可靠的音频数据处理流程。",
+          "该项目研究面向红外视觉感知的退化感知参数高效适配方法，旨在提升模型在复杂退化条件下的鲁棒感知能力。",
+        project1OverviewNote:
+          "概览图接口：将 assets/dapef_overview.png 替换为最终的 DAPEF overview 图片即可。",
 
         publicationsTitle: "论文 / 预印本",
-        pub1Title: "关于红外视觉高效适配方法的研究工作",
+        pub1Title: "DAPEF: Degradation-Aware Parameter-Efficient Adaptation for Infrared Visual Perception",
         pub1Authors: "Qilong Zhao, et al.",
-        pub1Venue: "Under review / in preparation.",
-        pubNote: "更多论文和预印本将后续更新。",
+        pub1Venue: "IEEE T-PAMI under-review.",
+
+        newsTitle: "新闻",
+        news1Date: "2026",
+        news1Title: "获得 2026 年 MCM/ICM Finalist Award（F 奖）。",
+        news1Desc:
+          "我们的团队在 2026 年美国大学生数学建模竞赛 / 交叉学科建模竞赛中获得 Finalist Award。",
+        news1AwardNote:
+          "获奖照片接口：将 assets/mcm_icm_2026_award.jpg 替换为最终获奖照片；论文链接可修改为 paper/mcm_icm_2026.pdf。",
 
         educationTitle: "教育经历",
-        eduTitle: "大连理工大学",
-        eduMeta: "数字媒体技术 工学本科",
-        eduDesc: "国际信息与软件学院",
+        edu1Title: "大连理工大学",
+        edu1Meta: "数字媒体技术 工学本科，2023.9–2027.6",
+        edu1Desc: "国际信息与软件学院",
+        edu2Title: "河北省石家庄市石家庄一中（东校区）",
+        edu2Meta: "高中，2020.9–2023.6",
+        edu2Desc: "河北省石家庄市",
 
         contactTitle: "联系方式",
         contactText: "欢迎通过邮箱或社交媒体联系我。"
@@ -570,54 +626,55 @@
 
         navAbout: "About",
         navResearch: "Research",
-        navProjects: "Projects",
+        navProjects: "Project",
         navPublications: "Publications",
+        navNews: "News",
+        navEducation: "Education",
         navContact: "Contact",
 
         aboutTitle: "About Me",
         aboutText:
-          "I am an undergraduate student majoring in Digital Media Technology at Dalian University of Technology. My research interests include computer vision, infrared image perception, multimodal foundation models, and embodied AI. I am particularly interested in improving robust visual perception under complex degradation scenarios through foundation models, parameter-efficient fine-tuning, and degradation-aware training.",
+          "I am an undergraduate student majoring in Digital Media Technology at Dalian University of Technology. My main interests lie in computer vision, multimodal foundation models, and embodied AI.",
         aboutText2:
-          "Beyond research, I am also interested in photography, mathematics, transportation systems, education, and coding. I hope to connect visual perception, multimodal understanding, and real-world intelligent systems.",
+          "Beyond research, I have long-standing interests in photography, mathematics, and football. People with similar interests are very welcome to contact me!",
 
         researchTitle: "Research Interests",
         researchTags: [
-          "Infrared Image Perception",
-          "Infrared Small Target Detection",
-          "Image Processing",
-          "Vision-Language Models",
-          "Parameter-Efficient Fine-Tuning",
+          "Computer Vision",
+          "Multimodal Foundation Models",
           "Embodied AI",
-          "3D Reconstruction"
+          "Infrared Visual Perception",
+          "Parameter-Efficient Fine-Tuning"
         ],
 
-        projectsTitle: "Selected Projects",
-
-        project1Title: "Degradation-Aware Adaptation for Infrared Perception",
-        project1Meta: "Computer Vision / Infrared Perception / PEFT",
+        projectsTitle: "Selected Project",
+        project1Title: "DAPEF: Degradation-Aware Parameter-Efficient Adaptation for Infrared Visual Perception",
+        project1Meta: "Computer Vision / Infrared Visual Perception / Parameter-Efficient Fine-Tuning",
         project1Desc:
-          "This project investigates degradation-aware training and parameter-efficient adaptation for infrared perception, focusing on robust visual representation under low signal-to-noise ratio, small targets, complex backgrounds, and image degradations.",
-
-        project2Title: "PEFT-based Chinese-CLIP System for Food Recognition and Recipe Retrieval",
-        project2Meta: "Vision-Language Retrieval / Chinese-CLIP / LoRA / Adapter",
-        project2Desc:
-          "This project builds a Chinese-CLIP based food recognition and recipe retrieval system, using PEFT strategies such as LoRA and Adapter for cross-modal image-text retrieval.",
-
-        project3Title: "Audio Quality Assessment and Data Filtering Pipeline",
-        project3Meta: "Audio Processing / Quality Assessment / Data Filtering",
-        project3Desc:
-          "This project explores audio quality assessment, SNR-like estimation, and degraded data filtering for building a more reliable audio data processing pipeline.",
+          "This project studies degradation-aware parameter-efficient adaptation for infrared visual perception, aiming to improve robust perception under complex degradation conditions.",
+        project1OverviewNote:
+          "Overview figure placeholder: replace assets/dapef_overview.png with the final DAPEF overview image.",
 
         publicationsTitle: "Publications / Preprints",
-        pub1Title: "Manuscript on Efficient Adaptation for Infrared Vision",
+        pub1Title: "DAPEF: Degradation-Aware Parameter-Efficient Adaptation for Infrared Visual Perception",
         pub1Authors: "Qilong Zhao, et al.",
-        pub1Venue: "Under review / in preparation.",
-        pubNote: "More publications and preprints will be updated soon.",
+        pub1Venue: "IEEE T-PAMI under-review.",
+
+        newsTitle: "News",
+        news1Date: "2026",
+        news1Title: "Awarded Finalist in the 2026 MCM/ICM.",
+        news1Desc:
+          "Our team received the Finalist Award in the 2026 Mathematical Contest in Modeling / Interdisciplinary Contest in Modeling.",
+        news1AwardNote:
+          "Award photo placeholder: replace assets/mcm_icm_2026_award.jpg with the final award photo; the paper link can be updated at paper/mcm_icm_2026.pdf.",
 
         educationTitle: "Education",
-        eduTitle: "Dalian University of Technology",
-        eduMeta: "B.Eng. in Digital Media Technology",
-        eduDesc: "International School of Information and Software.",
+        edu1Title: "Dalian University of Technology",
+        edu1Meta: "B.Eng. in Digital Media Technology, 2023.9–2027.6",
+        edu1Desc: "International School of Information and Software.",
+        edu2Title: "Shijiazhuang No.1 High School, East Campus",
+        edu2Meta: "High School, 2020.9–2023.6",
+        edu2Desc: "Shijiazhuang, Hebei, China.",
 
         contactTitle: "Contact",
         contactText: "Feel free to contact me via email or social media."
@@ -630,50 +687,55 @@
 
         navAbout: "自己紹介",
         navResearch: "研究分野",
-        navProjects: "プロジェクト",
+        navProjects: "代表プロジェクト",
         navPublications: "論文",
+        navNews: "ニュース",
+        navEducation: "学歴",
         navContact: "連絡先",
 
         aboutTitle: "自己紹介",
         aboutText:
-          "私は大連理工大学デジタルメディア技術専攻の学部生です。主な研究関心は、コンピュータビジョン、赤外線画像認識、マルチモーダル基盤モデル、エンボディドAIです。特に、基盤モデル、パラメータ効率の高い微調整手法、劣化認識型学習を用いて、複雑な視覚環境におけるロバストな知覚能力を向上させることに関心があります。",
+          "私は大連理工大学デジタルメディア技術専攻の学部生です。主な関心分野は、コンピュータビジョン、マルチモーダル基盤モデル、エンボディドAIです。",
         aboutText2:
-          "研究以外にも、写真、数学、交通システム、教育、プログラミングに関心があります。視覚認識、マルチモーダル理解、実世界の知能システムを結び付けたいと考えています。",
+          "研究以外にも、写真、数学、サッカーに長く関心を持っています。同じ関心を持つ方からのご連絡を歓迎します。",
 
         researchTitle: "研究分野",
         researchTags: [
-          "視覚言語モデル",
+          "コンピュータビジョン",
+          "マルチモーダル基盤モデル",
           "エンボディドAI",
-          "3D再構築"
+          "赤外線視覚認識",
+          "パラメータ効率の高い微調整"
         ],
 
         projectsTitle: "代表プロジェクト",
-
-        project1Title: "赤外線認識のための劣化認識型適応手法",
-        project1Meta: "コンピュータビジョン / 赤外線認識 / PEFT",
+        project1Title: "DAPEF: Degradation-Aware Parameter-Efficient Adaptation for Infrared Visual Perception",
+        project1Meta: "コンピュータビジョン / 赤外線視覚認識 / パラメータ効率の高い微調整",
         project1Desc:
-          "赤外線画像認識タスクに対して、劣化認識型学習とパラメータ効率の高い適応手法を研究し、低SNR、小目標、複雑背景、画像劣化条件下でのロバストな視覚表現に焦点を当てています。",
-
-        project2Title: "PEFTに基づくChinese-CLIP食物認識・レシピ検索システム",
-        project2Meta: "視覚言語検索 / Chinese-CLIP / LoRA / Adapter",
-        project2Desc:
-          "Chinese-CLIPを用いた食物認識とレシピ検索システムを構築し、LoRAやAdapterなどのPEFT手法により画像とテキストのクロスモーダル検索を実現します。",
-
-        project3Title: "音声品質評価とデータフィルタリング",
-        project3Meta: "音声処理 / 品質評価 / データフィルタリング",
-        project3Desc:
-          "音声品質評価、SNR推定、劣化データのフィルタリング手法を検討し、より信頼性の高い音声データ処理パイプラインの構築を目指します。",
+          "本プロジェクトでは、赤外線視覚認識に向けた劣化認識型のパラメータ効率適応手法を研究し、複雑な劣化条件下でのロバストな知覚能力の向上を目指しています。",
+        project1OverviewNote:
+          "概览図のプレースホルダー：assets/dapef_overview.png を最終的な DAPEF の概览図に置き換えてください。",
 
         publicationsTitle: "論文 / プレプリント",
-        pub1Title: "赤外線ビジョンの効率的適応に関する研究",
+        pub1Title: "DAPEF: Degradation-Aware Parameter-Efficient Adaptation for Infrared Visual Perception",
         pub1Authors: "Qilong Zhao, et al.",
-        pub1Venue: "Under review / in preparation.",
-        pubNote: "今後、論文およびプレプリントを更新予定です。",
+        pub1Venue: "IEEE T-PAMI under-review.",
+
+        newsTitle: "ニュース",
+        news1Date: "2026",
+        news1Title: "2026年 MCM/ICM において Finalist Award を受賞。",
+        news1Desc:
+          "私たちのチームは、2026年の Mathematical Contest in Modeling / Interdisciplinary Contest in Modeling において Finalist Award を受賞しました。",
+        news1AwardNote:
+          "受賞写真のプレースホルダー：assets/mcm_icm_2026_award.jpg を最終的な受賞写真に置き換えてください。論文リンクは paper/mcm_icm_2026.pdf で更新できます。",
 
         educationTitle: "学歴",
-        eduTitle: "大連理工大学",
-        eduMeta: "デジタルメディア技術 学士課程",
-        eduDesc: "国際情報ソフトウェア学院",
+        edu1Title: "大連理工大学",
+        edu1Meta: "デジタルメディア技術 工学学士課程，2023.9–2027.6",
+        edu1Desc: "国際情報ソフトウェア学院",
+        edu2Title: "河北省石家荘市 石家荘第一中学校（東校区）",
+        edu2Meta: "高校，2020.9–2023.6",
+        edu2Desc: "中国河北省石家荘市",
 
         contactTitle: "連絡先",
         contactText: "メールまたはソーシャルメディアでお気軽にご連絡ください。"
@@ -691,6 +753,8 @@
       document.getElementById("nav-research").innerHTML = t.navResearch;
       document.getElementById("nav-projects").innerHTML = t.navProjects;
       document.getElementById("nav-publications").innerHTML = t.navPublications;
+      document.getElementById("nav-news").innerHTML = t.navNews;
+      document.getElementById("nav-education").innerHTML = t.navEducation;
       document.getElementById("nav-contact").innerHTML = t.navContact;
 
       document.getElementById("about-title").innerHTML = t.aboutTitle;
@@ -703,29 +767,29 @@
         .join("");
 
       document.getElementById("projects-title").innerHTML = t.projectsTitle;
-
       document.getElementById("project1-title").innerHTML = t.project1Title;
       document.getElementById("project1-meta").innerHTML = t.project1Meta;
       document.getElementById("project1-desc").innerHTML = t.project1Desc;
-
-      document.getElementById("project2-title").innerHTML = t.project2Title;
-      document.getElementById("project2-meta").innerHTML = t.project2Meta;
-      document.getElementById("project2-desc").innerHTML = t.project2Desc;
-
-      document.getElementById("project3-title").innerHTML = t.project3Title;
-      document.getElementById("project3-meta").innerHTML = t.project3Meta;
-      document.getElementById("project3-desc").innerHTML = t.project3Desc;
+      document.getElementById("project1-overview-note").innerHTML = t.project1OverviewNote;
 
       document.getElementById("publications-title").innerHTML = t.publicationsTitle;
       document.getElementById("pub1-title").innerHTML = t.pub1Title;
       document.getElementById("pub1-authors").innerHTML = t.pub1Authors;
       document.getElementById("pub1-venue").innerHTML = t.pub1Venue;
-      document.getElementById("pub-note").innerHTML = t.pubNote;
+
+      document.getElementById("news-title").innerHTML = t.newsTitle;
+      document.getElementById("news1-date").innerHTML = t.news1Date;
+      document.getElementById("news1-title").innerHTML = t.news1Title;
+      document.getElementById("news1-desc").innerHTML = t.news1Desc;
+      document.getElementById("news1-award-note").innerHTML = t.news1AwardNote;
 
       document.getElementById("education-title").innerHTML = t.educationTitle;
-      document.getElementById("edu-title").innerHTML = t.eduTitle;
-      document.getElementById("edu-meta").innerHTML = t.eduMeta;
-      document.getElementById("edu-desc").innerHTML = t.eduDesc;
+      document.getElementById("edu1-title").innerHTML = t.edu1Title;
+      document.getElementById("edu1-meta").innerHTML = t.edu1Meta;
+      document.getElementById("edu1-desc").innerHTML = t.edu1Desc;
+      document.getElementById("edu2-title").innerHTML = t.edu2Title;
+      document.getElementById("edu2-meta").innerHTML = t.edu2Meta;
+      document.getElementById("edu2-desc").innerHTML = t.edu2Desc;
 
       document.getElementById("contact-title").innerHTML = t.contactTitle;
       document.getElementById("contact-text").innerHTML = t.contactText;
