@@ -254,6 +254,31 @@
       color: #333;
     }
 
+    .project-card {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 20px;
+      align-items: start;
+      padding: 16px;
+      background: var(--light-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      margin-bottom: 16px;
+    }
+
+    .project-thumb {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      background: #fff;
+      border: 1px solid var(--border);
+    }
+
+    .project-content {
+      min-width: 0;
+    }
+
     .pub,
     .news-card {
       padding: 14px 16px;
@@ -284,16 +309,12 @@
       font-size: 14px;
     }
 
-    .overview-box,
     .news-media-box {
       margin-top: 14px;
-      border: 1px dashed var(--border);
       background: #fff;
       border-radius: 12px;
-      padding: 12px;
     }
 
-    .overview-img,
     .news-img {
       display: block;
       width: 100%;
@@ -301,12 +322,6 @@
       object-fit: contain;
       border-radius: 8px;
       background: var(--light-bg);
-    }
-
-    .placeholder-note {
-      margin: 8px 0 0;
-      color: var(--muted);
-      font-size: 13px;
     }
 
     .footer {
@@ -336,6 +351,16 @@
       .nav-links {
         flex-wrap: wrap;
         justify-content: center;
+      }
+
+      .project-card {
+        grid-template-columns: 1fr;
+      }
+
+      .project-thumb {
+        height: auto;
+        max-height: 260px;
+        object-fit: contain;
       }
     }
   </style>
@@ -421,30 +446,34 @@
       </section>
 
       <section class="section" id="projects">
-        <h2 class="section-title" id="projects-title">Selected Project</h2>
+        <h2 class="section-title" id="projects-title">Projects</h2>
 
-        <div class="item">
-          <div class="item-title" id="project1-title">
-            DAPEF: Degradation-Aware Parameter-Efficient Adaptation for Infrared Visual Perception
-          </div>
-          <div class="item-meta" id="project1-meta">
-            Computer Vision / Infrared Visual Perception / Parameter-Efficient Fine-Tuning
-          </div>
-          <p class="item-desc" id="project1-desc">
-            This project investigates degradation-aware parameter-efficient adaptation for infrared visual perception, aiming to improve robust perception under complex degradation conditions.
-          </p>
+        <div class="project-card">
+          <img
+            id="project1-overview-img"
+            class="project-thumb"
+            src="assets/dapef_overview.png"
+            alt="DAPEF overview figure"
+          />
 
-          <div class="link-row">
-            <a id="project1-arxiv" href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank">
-              arXiv
-            </a>
-          </div>
+          <div class="project-content">
+            <div class="item-title" id="project1-title">
+              DAPEF: Degradation-Aware Parameter-Efficient Adaptation for Infrared Visual Perception
+            </div>
 
-          <div class="overview-box">
-            <img id="project1-overview-img" class="overview-img" src="assets/dapef_overview.png" alt="DAPEF overview figure" />
-            <p class="placeholder-note" id="project1-overview-note">
-              Overview figure placeholder: replace <code>assets/dapef_overview.png</code> with the final overview image.
+            <div class="item-meta" id="project1-meta">
+              Computer Vision / Infrared Visual Perception / Parameter-Efficient Fine-Tuning
+            </div>
+
+            <p class="item-desc" id="project1-desc">
+              This project investigates degradation-aware parameter-efficient adaptation for infrared visual perception, aiming to improve robust perception under complex degradation conditions.
             </p>
+
+            <div class="link-row">
+              <a id="project1-arxiv" href="https://arxiv.org/abs/XXXX.XXXXX" target="_blank">
+                arXiv
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -494,10 +523,12 @@
           </div>
 
           <div class="news-media-box">
-            <img id="news1-award-img" class="news-img" src="assets/mcm_icm_2026_award.jpg" alt="2026 MCM/ICM award photo" />
-            <p class="placeholder-note" id="news1-award-note">
-              Award photo placeholder: replace <code>assets/mcm_icm_2026_award.jpg</code> with the final award photo.
-            </p>
+            <img
+              id="news1-award-img"
+              class="news-img"
+              src="assets/mcm_icm_2026_award.jpg"
+              alt="2026 MCM/ICM award photo"
+            />
           </div>
         </div>
       </section>
@@ -565,7 +596,7 @@
 
         navAbout: "关于我",
         navResearch: "研究方向",
-        navProjects: "代表项目",
+        navProjects: "项目",
         navPublications: "论文",
         navNews: "新闻",
         navEducation: "教育经历",
@@ -586,13 +617,11 @@
           "参数高效微调"
         ],
 
-        projectsTitle: "代表项目",
+        projectsTitle: "项目",
         project1Title: "DAPEF: Degradation-Aware Parameter-Efficient Adaptation for Infrared Visual Perception",
         project1Meta: "计算机视觉 / 红外视觉感知 / 参数高效微调",
         project1Desc:
           "该项目研究面向红外视觉感知的退化感知参数高效适配方法，旨在提升模型在复杂退化条件下的鲁棒感知能力。",
-        project1OverviewNote:
-          "概览图接口：将 assets/dapef_overview.png 替换为最终的 DAPEF overview 图片即可。",
 
         publicationsTitle: "论文 / 预印本",
         pub1Title: "DAPEF: Degradation-Aware Parameter-Efficient Adaptation for Infrared Visual Perception",
@@ -604,8 +633,6 @@
         news1Title: "获得 2026 年 MCM/ICM Finalist Award（F 奖）。",
         news1Desc:
           "我们的团队在 2026 年美国大学生数学建模竞赛 / 交叉学科建模竞赛中获得 Finalist Award。",
-        news1AwardNote:
-          "获奖照片接口：将 assets/mcm_icm_2026_award.jpg 替换为最终获奖照片；论文链接可修改为 paper/mcm_icm_2026.pdf。",
 
         educationTitle: "教育经历",
         edu1Title: "大连理工大学",
@@ -626,7 +653,7 @@
 
         navAbout: "About",
         navResearch: "Research",
-        navProjects: "Project",
+        navProjects: "Projects",
         navPublications: "Publications",
         navNews: "News",
         navEducation: "Education",
@@ -647,13 +674,11 @@
           "Parameter-Efficient Fine-Tuning"
         ],
 
-        projectsTitle: "Selected Project",
+        projectsTitle: "Projects",
         project1Title: "DAPEF: Degradation-Aware Parameter-Efficient Adaptation for Infrared Visual Perception",
         project1Meta: "Computer Vision / Infrared Visual Perception / Parameter-Efficient Fine-Tuning",
         project1Desc:
           "This project studies degradation-aware parameter-efficient adaptation for infrared visual perception, aiming to improve robust perception under complex degradation conditions.",
-        project1OverviewNote:
-          "Overview figure placeholder: replace assets/dapef_overview.png with the final DAPEF overview image.",
 
         publicationsTitle: "Publications / Preprints",
         pub1Title: "DAPEF: Degradation-Aware Parameter-Efficient Adaptation for Infrared Visual Perception",
@@ -665,8 +690,6 @@
         news1Title: "Awarded Finalist in the 2026 MCM/ICM.",
         news1Desc:
           "Our team received the Finalist Award in the 2026 Mathematical Contest in Modeling / Interdisciplinary Contest in Modeling.",
-        news1AwardNote:
-          "Award photo placeholder: replace assets/mcm_icm_2026_award.jpg with the final award photo; the paper link can be updated at paper/mcm_icm_2026.pdf.",
 
         educationTitle: "Education",
         edu1Title: "Dalian University of Technology",
@@ -687,7 +710,7 @@
 
         navAbout: "自己紹介",
         navResearch: "研究分野",
-        navProjects: "代表プロジェクト",
+        navProjects: "プロジェクト",
         navPublications: "論文",
         navNews: "ニュース",
         navEducation: "学歴",
@@ -708,13 +731,11 @@
           "パラメータ効率の高い微調整"
         ],
 
-        projectsTitle: "代表プロジェクト",
+        projectsTitle: "プロジェクト",
         project1Title: "DAPEF: Degradation-Aware Parameter-Efficient Adaptation for Infrared Visual Perception",
         project1Meta: "コンピュータビジョン / 赤外線視覚認識 / パラメータ効率の高い微調整",
         project1Desc:
           "本プロジェクトでは、赤外線視覚認識に向けた劣化認識型のパラメータ効率適応手法を研究し、複雑な劣化条件下でのロバストな知覚能力の向上を目指しています。",
-        project1OverviewNote:
-          "概览図のプレースホルダー：assets/dapef_overview.png を最終的な DAPEF の概览図に置き換えてください。",
 
         publicationsTitle: "論文 / プレプリント",
         pub1Title: "DAPEF: Degradation-Aware Parameter-Efficient Adaptation for Infrared Visual Perception",
@@ -726,8 +747,6 @@
         news1Title: "2026年 MCM/ICM において Finalist Award を受賞。",
         news1Desc:
           "私たちのチームは、2026年の Mathematical Contest in Modeling / Interdisciplinary Contest in Modeling において Finalist Award を受賞しました。",
-        news1AwardNote:
-          "受賞写真のプレースホルダー：assets/mcm_icm_2026_award.jpg を最終的な受賞写真に置き換えてください。論文リンクは paper/mcm_icm_2026.pdf で更新できます。",
 
         educationTitle: "学歴",
         edu1Title: "大連理工大学",
@@ -770,7 +789,6 @@
       document.getElementById("project1-title").innerHTML = t.project1Title;
       document.getElementById("project1-meta").innerHTML = t.project1Meta;
       document.getElementById("project1-desc").innerHTML = t.project1Desc;
-      document.getElementById("project1-overview-note").innerHTML = t.project1OverviewNote;
 
       document.getElementById("publications-title").innerHTML = t.publicationsTitle;
       document.getElementById("pub1-title").innerHTML = t.pub1Title;
@@ -781,7 +799,6 @@
       document.getElementById("news1-date").innerHTML = t.news1Date;
       document.getElementById("news1-title").innerHTML = t.news1Title;
       document.getElementById("news1-desc").innerHTML = t.news1Desc;
-      document.getElementById("news1-award-note").innerHTML = t.news1AwardNote;
 
       document.getElementById("education-title").innerHTML = t.educationTitle;
       document.getElementById("edu1-title").innerHTML = t.edu1Title;
