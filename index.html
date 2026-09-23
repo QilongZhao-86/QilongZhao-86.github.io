@@ -270,9 +270,84 @@
       margin-bottom: 0;
     }
 
-    .education-current {
-      padding-left: 16px;
-      border-left: 3px solid var(--accent);
+    .education-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .education-entry {
+      display: grid;
+      grid-template-columns: 168px minmax(0, 1fr);
+      align-items: center;
+      gap: 28px;
+      min-height: 150px;
+      padding: 22px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .education-entry:last-child {
+      border-bottom: 0;
+    }
+
+    .institution-mark {
+      position: relative;
+      width: 154px;
+      height: 112px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      justify-self: center;
+      overflow: hidden;
+      border-radius: 18px;
+      background: #fff;
+    }
+
+    .institution-mark img {
+      display: block;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .institution-mark.dut img {
+      position: absolute;
+      width: 285px;
+      max-width: none;
+      max-height: none;
+      left: 50%;
+      top: 63%;
+      transform: translate(-50%, -50%);
+    }
+
+    .institution-mark.cas img {
+      position: absolute;
+      height: 100px;
+      max-width: none;
+      max-height: none;
+      left: 6px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .institution-mark.school {
+      padding: 15px 10px;
+      background: #173c60;
+    }
+
+    .education-content .item-title {
+      color: var(--primary);
+      font-size: 17px;
+      line-height: 1.45;
+    }
+
+    .education-content .item-meta {
+      margin: 8px 0 5px;
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    .education-content .item-desc {
+      color: var(--muted);
     }
 
     .item-title {
@@ -383,6 +458,28 @@
 
       .nav-links a {
         display: none;
+      }
+
+      .education-entry {
+        grid-template-columns: 82px minmax(0, 1fr);
+        gap: 16px;
+        min-height: 120px;
+        padding: 18px 0;
+      }
+
+      .institution-mark {
+        width: 78px;
+        height: 68px;
+        border-radius: 12px;
+      }
+
+      .institution-mark.dut img {
+        width: 170px;
+      }
+
+      .institution-mark.cas img {
+        height: 62px;
+        left: 4px;
       }
     }
   </style>
@@ -546,40 +643,39 @@
       <section class="section" id="education">
         <h2 class="section-title" id="education-title">Education</h2>
 
-        <div class="item education-current">
-          <div class="item-title" id="edu0-title">
-            Institute of Automation, Chinese Academy of Sciences
-          </div>
-          <div class="item-meta" id="edu0-meta">
-            Incoming Ph.D. Student, 2027
-          </div>
-          <p class="item-desc" id="edu0-desc">
-            State Key Laboratory of Multimodal Artificial Intelligence Systems.
-          </p>
-        </div>
+        <div class="education-list">
+          <article class="education-entry">
+            <div class="institution-mark cas">
+              <img src="assets/casia-logo.png" alt="中国科学院自动化研究所标识" />
+            </div>
+            <div class="education-content">
+              <div class="item-title" id="edu0-title">Institute of Automation, Chinese Academy of Sciences</div>
+              <div class="item-meta" id="edu0-meta">Incoming Ph.D. Student, 2027</div>
+              <p class="item-desc" id="edu0-desc">State Key Laboratory of Multimodal Artificial Intelligence Systems.</p>
+            </div>
+          </article>
 
-        <div class="item">
-          <div class="item-title" id="edu1-title">
-            Dalian University of Technology
-          </div>
-          <div class="item-meta" id="edu1-meta">
-            B.Eng. in Digital Media Technology, 2023.9–2027.6
-          </div>
-          <p class="item-desc" id="edu1-desc">
-            International School of Information and Software.
-          </p>
-        </div>
+          <article class="education-entry">
+            <div class="institution-mark dut">
+              <img src="assets/dut-logo.png" alt="大连理工大学校徽" />
+            </div>
+            <div class="education-content">
+              <div class="item-title" id="edu1-title">Dalian University of Technology</div>
+              <div class="item-meta" id="edu1-meta">B.Eng. in Digital Media Technology, 2023.9–2027.6</div>
+              <p class="item-desc" id="edu1-desc">International School of Information and Software.</p>
+            </div>
+          </article>
 
-        <div class="item">
-          <div class="item-title" id="edu2-title">
-            Shijiazhuang No.1 High School, East Campus
-          </div>
-          <div class="item-meta" id="edu2-meta">
-            High School, 2020.9–2023.6
-          </div>
-          <p class="item-desc" id="edu2-desc">
-            Shijiazhuang, Hebei, China.
-          </p>
+          <article class="education-entry">
+            <div class="institution-mark school">
+              <img src="assets/sjzyz-logo.png" alt="石家庄市第一中学标识" />
+            </div>
+            <div class="education-content">
+              <div class="item-title" id="edu2-title">Shijiazhuang No.1 High School, East Campus</div>
+              <div class="item-meta" id="edu2-meta">High School, 2020.9–2023.6</div>
+              <p class="item-desc" id="edu2-desc">Shijiazhuang, Hebei, China.</p>
+            </div>
+          </article>
         </div>
       </section>
 
