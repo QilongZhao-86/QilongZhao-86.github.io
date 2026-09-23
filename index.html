@@ -8,13 +8,15 @@
 
   <style>
     :root {
-      --primary: #1f4e79;
-      --primary-dark: #163955;
-      --text: #222;
-      --muted: #666;
-      --light-bg: #f7f8fa;
-      --border: #e5e7eb;
+      --primary: #155e75;
+      --primary-dark: #0f3f50;
+      --accent: #c9973e;
+      --text: #172126;
+      --muted: #607078;
+      --light-bg: #f3f7f8;
+      --border: #dce6e8;
       --card-bg: #ffffff;
+      --shadow: 0 18px 45px rgba(15, 63, 80, 0.1);
     }
 
     * {
@@ -25,7 +27,9 @@
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       color: var(--text);
-      background: #ffffff;
+      background:
+        radial-gradient(circle at 8% 0%, rgba(21, 94, 117, 0.09), transparent 28rem),
+        #fbfcfc;
       line-height: 1.7;
     }
 
@@ -42,7 +46,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.96);
+      background: rgba(251, 252, 252, 0.9);
       border-bottom: 1px solid var(--border);
       backdrop-filter: blur(8px);
     }
@@ -97,10 +101,10 @@
     .container {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 42px 24px 80px;
+      padding: 54px 24px 88px;
       display: grid;
-      grid-template-columns: 300px 1fr;
-      gap: 44px;
+      grid-template-columns: 310px minmax(0, 1fr);
+      gap: 52px;
     }
 
     .sidebar {
@@ -108,6 +112,11 @@
       top: 86px;
       height: fit-content;
       text-align: center;
+      padding: 28px 24px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: var(--shadow);
     }
 
     .avatar {
@@ -115,8 +124,8 @@
       height: 180px;
       object-fit: cover;
       border-radius: 50%;
-      border: 4px solid #fff;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      border: 5px solid #fff;
+      box-shadow: 0 10px 30px rgba(15, 63, 80, 0.18);
       margin-bottom: 18px;
     }
 
@@ -128,15 +137,21 @@
     }
 
     .subtitle {
-      margin: 6px 0 12px;
-      color: var(--muted);
-      font-size: 15px;
+      display: inline-flex;
+      margin: 8px 0 14px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      color: var(--primary-dark);
+      background: #e8f2f4;
+      font-size: 14px;
+      font-weight: 700;
     }
 
     .affiliation {
       font-size: 14px;
       color: #444;
       margin-bottom: 18px;
+      line-height: 1.65;
     }
 
     .social-links {
@@ -194,21 +209,35 @@
     }
 
     .section {
-      margin-bottom: 38px;
-      padding-bottom: 26px;
-      border-bottom: 1px solid var(--border);
+      margin-bottom: 22px;
+      padding: 28px 30px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.88);
+      box-shadow: 0 8px 28px rgba(15, 63, 80, 0.045);
     }
 
     .section:last-child {
-      border-bottom: none;
+      border-bottom: 1px solid var(--border);
     }
 
     .section-title {
       font-size: 22px;
       margin: 0 0 16px;
       color: var(--primary-dark);
-      border-left: 4px solid var(--primary);
-      padding-left: 10px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 44px;
+      height: 3px;
+      border-radius: 99px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
     }
 
     .lead {
@@ -235,6 +264,15 @@
 
     .item {
       margin-bottom: 18px;
+    }
+
+    .item:last-child {
+      margin-bottom: 0;
+    }
+
+    .education-current {
+      padding-left: 16px;
+      border-left: 3px solid var(--accent);
     }
 
     .item-title {
@@ -323,6 +361,10 @@
         position: static;
       }
 
+      .section {
+        padding: 22px 20px;
+      }
+
       .nav-inner {
         flex-direction: column;
         gap: 10px;
@@ -331,6 +373,16 @@
       .nav-links {
         flex-wrap: wrap;
         justify-content: center;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        padding: 28px 16px 56px;
+      }
+
+      .nav-links a {
+        display: none;
       }
     }
   </style>
@@ -364,11 +416,11 @@
       <img src="avatar.jpg" alt="Qilong Zhao" class="avatar" />
 
       <h1 class="name" id="name">赵琦隆</h1>
-      <div class="subtitle" id="subtitle">本科生 / 数字媒体技术</div>
+      <div class="subtitle" id="subtitle">博士研究生（2027 年入学）</div>
 
       <div class="affiliation" id="affiliation">
-        大连理工大学<br />
-        国际信息与软件学院
+        中国科学院自动化研究所<br />
+        多模态人工智能系统全国重点实验室
       </div>
 
       <div class="social-links">
@@ -395,7 +447,7 @@
         <h2 class="section-title" id="about-title">About Me</h2>
 
         <p class="lead" id="about-text">
-          我是大连理工大学数字媒体技术专业本科生，主要关注计算机视觉、多模态大模型以及具身智能方向。
+          我将于 2027 年进入中国科学院自动化研究所多模态人工智能系统全国重点实验室攻读博士学位，主要关注计算机视觉、多模态大模型以及具身智能方向。
         </p>
 
         <p class="lead" id="about-text-2">
@@ -494,6 +546,18 @@
       <section class="section" id="education">
         <h2 class="section-title" id="education-title">Education</h2>
 
+        <div class="item education-current">
+          <div class="item-title" id="edu0-title">
+            Institute of Automation, Chinese Academy of Sciences
+          </div>
+          <div class="item-meta" id="edu0-meta">
+            Incoming Ph.D. Student, 2027
+          </div>
+          <p class="item-desc" id="edu0-desc">
+            State Key Laboratory of Multimodal Artificial Intelligence Systems.
+          </p>
+        </div>
+
         <div class="item">
           <div class="item-title" id="edu1-title">
             Dalian University of Technology
@@ -542,15 +606,15 @@
   </main>
 
   <footer class="footer">
-    © 2026 Qilong Zhao. Last updated: May 2026.
+    © 2026 Qilong Zhao. Last updated: September 2026.
   </footer>
 
   <script>
     const content = {
       zh: {
         name: "赵琦隆",
-        subtitle: "本科生 / 数字媒体技术",
-        affiliation: "大连理工大学<br>国际信息与软件学院",
+        subtitle: "博士研究生（2027 年入学）",
+        affiliation: "中国科学院自动化研究所<br>多模态人工智能系统全国重点实验室",
 
         navAbout: "关于我",
         navResearch: "研究方向",
@@ -562,7 +626,7 @@
 
         aboutTitle: "关于我",
         aboutText:
-          "我是大连理工大学数字媒体技术专业本科生，主要关注计算机视觉、多模态大模型以及具身智能方向。",
+          "我将于 2027 年进入中国科学院自动化研究所多模态人工智能系统全国重点实验室攻读博士学位，主要关注计算机视觉、多模态大模型以及具身智能方向。",
         aboutText2:
           "除科研外，我也长期关注摄影、数学、足球。欢迎相同兴趣的同志联系我！",
 
@@ -595,6 +659,9 @@
           "获奖照片接口：将 assets/mcm_icm_2026_award.jpg 替换为最终获奖照片；论文链接可修改为 paper/mcm_icm_2026.pdf。",
 
         educationTitle: "教育经历",
+        edu0Title: "中国科学院自动化研究所",
+        edu0Meta: "博士研究生，2027 年入学",
+        edu0Desc: "多模态人工智能系统全国重点实验室",
         edu1Title: "大连理工大学",
         edu1Meta: "数字媒体技术 工学本科，2023.9–2027.6",
         edu1Desc: "国际信息与软件学院",
@@ -608,8 +675,8 @@
 
       en: {
         name: "Qilong Zhao",
-        subtitle: "Undergraduate Student / Digital Media Technology",
-        affiliation: "Dalian University of Technology<br>International School of Information and Software",
+        subtitle: "Incoming Ph.D. Student / 2027",
+        affiliation: "Institute of Automation, Chinese Academy of Sciences<br>State Key Laboratory of Multimodal Artificial Intelligence Systems",
 
         navAbout: "About",
         navResearch: "Research",
@@ -621,7 +688,7 @@
 
         aboutTitle: "About Me",
         aboutText:
-          "I am an undergraduate student majoring in Digital Media Technology at Dalian University of Technology. My main interests lie in computer vision, multimodal foundation models, and embodied AI.",
+          "I will join the State Key Laboratory of Multimodal Artificial Intelligence Systems at the Institute of Automation, Chinese Academy of Sciences as a Ph.D. student in 2027. My main interests lie in computer vision, multimodal foundation models, and embodied AI.",
         aboutText2:
           "Beyond research, I have long-standing interests in photography, mathematics, and football. People with similar interests are very welcome to contact me!",
 
@@ -650,6 +717,9 @@
           "Our team received the Finalist Award in the 2026 Mathematical Contest in Modeling / Interdisciplinary Contest in Modeling.",
 
         educationTitle: "Education",
+        edu0Title: "Institute of Automation, Chinese Academy of Sciences",
+        edu0Meta: "Incoming Ph.D. Student, 2027",
+        edu0Desc: "State Key Laboratory of Multimodal Artificial Intelligence Systems.",
         edu1Title: "Dalian University of Technology",
         edu1Meta: "B.Eng. in Digital Media Technology, 2023.9–2027.6",
         edu1Desc: "International School of Information and Software.",
@@ -663,8 +733,8 @@
 
       jp: {
         name: "趙 琦隆",
-        subtitle: "学部生 / デジタルメディア技術",
-        affiliation: "大連理工大学<br>国際情報ソフトウェア学院",
+        subtitle: "博士課程進学予定 / 2027年入学",
+        affiliation: "中国科学院自動化研究所<br>マルチモーダル人工知能システム国家重点実験室",
 
         navAbout: "自己紹介",
         navResearch: "研究分野",
@@ -676,7 +746,7 @@
 
         aboutTitle: "自己紹介",
         aboutText:
-          "私は大連理工大学デジタルメディア技術専攻の学部生です。主な関心分野は、コンピュータビジョン、マルチモーダル基盤モデル、エンボディドAIです。",
+          "私は2027年に中国科学院自動化研究所・マルチモーダル人工知能システム国家重点実験室の博士課程へ進学予定です。主な関心分野は、コンピュータビジョン、マルチモーダル基盤モデル、エンボディドAIです。",
         aboutText2:
           "研究以外にも、写真、数学、サッカーに長く関心を持っています。同じ関心を持つ方からのご連絡を歓迎します。",
 
@@ -705,6 +775,9 @@
           "私たちのチームは、2026年の Mathematical Contest in Modeling / Interdisciplinary Contest in Modeling において Finalist Award を受賞しました。",
 
         educationTitle: "学歴",
+        edu0Title: "中国科学院自動化研究所",
+        edu0Meta: "博士課程，2027年入学予定",
+        edu0Desc: "マルチモーダル人工知能システム国家重点実験室",
         edu1Title: "大連理工大学",
         edu1Meta: "デジタルメディア技術 工学学士課程，2023.9–2027.6",
         edu1Desc: "国際情報ソフトウェア学院",
@@ -757,6 +830,9 @@
       document.getElementById("news1-desc").innerHTML = t.news1Desc;
 
       document.getElementById("education-title").innerHTML = t.educationTitle;
+      document.getElementById("edu0-title").textContent = t.edu0Title;
+      document.getElementById("edu0-meta").textContent = t.edu0Meta;
+      document.getElementById("edu0-desc").textContent = t.edu0Desc;
       document.getElementById("edu1-title").innerHTML = t.edu1Title;
       document.getElementById("edu1-meta").innerHTML = t.edu1Meta;
       document.getElementById("edu1-desc").innerHTML = t.edu1Desc;
