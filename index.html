@@ -340,6 +340,40 @@
       color: var(--muted);
     }
 
+    .academic-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .academic-label {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .profile-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 4px 10px;
+      border: 1px solid #c9dadd;
+      border-radius: 999px;
+      background: #f5fafb;
+      color: var(--primary-dark);
+      font-size: 13px;
+      font-weight: 650;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .profile-link:hover {
+      border-color: var(--primary);
+      background: #e8f2f4;
+      text-decoration: none;
+    }
+
     .item-title {
       font-weight: 700;
       color: #111;
@@ -638,6 +672,11 @@
               <div class="item-title" id="edu0-title">Institute of Automation, Chinese Academy of Sciences</div>
               <div class="item-meta" id="edu0-meta">Ph.D. in Pattern Recognition and Intelligent Systems, incoming 2027</div>
               <p class="item-desc" id="edu0-desc">State Key Laboratory of Multimodal Artificial Intelligence Systems.</p>
+              <div class="academic-links">
+                <span class="academic-label" id="edu0-advisor-label">Research group &amp; advisor</span>
+                <a class="profile-link" id="pal-link" href="https://nlpr.ia.ac.cn/pal/" target="_blank" rel="noopener noreferrer">PAL Group</a>
+                <a class="profile-link" id="chenglin-link" href="https://www.ia.cas.cn/rcdw/yjy/202404/t20240425_7131770.html" target="_blank" rel="noopener noreferrer">Prof. Cheng-Lin Liu</a>
+              </div>
             </div>
           </article>
 
@@ -649,6 +688,12 @@
               <div class="item-title" id="edu1-title">Dalian University of Technology</div>
               <div class="item-meta" id="edu1-meta">B.Eng. in Digital Media Technology, 2023.9–2027.6</div>
               <p class="item-desc" id="edu1-desc">International School of Information and Software.</p>
+              <div class="academic-links">
+                <span class="academic-label" id="edu1-advisor-label">Research group &amp; mentors</span>
+                <a class="profile-link" id="vlog-link" href="https://rsliu.tech/" target="_blank" rel="noopener noreferrer">VLOG Group</a>
+                <a class="profile-link" id="risheng-link" href="https://faculty.dlut.edu.cn/rsliu/" target="_blank" rel="noopener noreferrer">Prof. Risheng Liu</a>
+                <a class="profile-link" id="zhuliu-link" href="https://www.alphaxiv.org/@zhu-liu" target="_blank" rel="noopener noreferrer">Dr. Zhu Liu</a>
+              </div>
             </div>
           </article>
 
@@ -744,9 +789,16 @@
         edu0Title: "中国科学院自动化研究所",
         edu0Meta: "模式识别与智能系统 博士研究生，2027 年入学",
         edu0Desc: "多模态人工智能系统全国重点实验室",
+        edu0AdvisorLabel: "课题组与导师",
+        palName: "PAL 课题组",
+        chenglinName: "刘成林老师",
         edu1Title: "大连理工大学",
         edu1Meta: "数字媒体技术 工学本科，2023.9–2027.6",
         edu1Desc: "国际信息与软件学院",
+        edu1AdvisorLabel: "课题组与指导老师",
+        vlogName: "VLOG 课题组",
+        rishengName: "刘日升老师",
+        zhuLiuName: "刘铸博士",
         edu2Title: "河北省石家庄市石家庄一中（东校区）",
         edu2Meta: "高中，2020.9–2023.6",
         edu2Desc: "河北省石家庄市",
@@ -802,9 +854,16 @@
         edu0Title: "Institute of Automation, Chinese Academy of Sciences",
         edu0Meta: "Ph.D. in Pattern Recognition and Intelligent Systems, incoming 2027",
         edu0Desc: "State Key Laboratory of Multimodal Artificial Intelligence Systems.",
+        edu0AdvisorLabel: "Research group & advisor",
+        palName: "PAL Group",
+        chenglinName: "Prof. Cheng-Lin Liu",
         edu1Title: "Dalian University of Technology",
         edu1Meta: "B.Eng. in Digital Media Technology, 2023.9–2027.6",
         edu1Desc: "International School of Information and Software.",
+        edu1AdvisorLabel: "Research group & mentors",
+        vlogName: "VLOG Group",
+        rishengName: "Prof. Risheng Liu",
+        zhuLiuName: "Dr. Zhu Liu",
         edu2Title: "Shijiazhuang No.1 High School, East Campus",
         edu2Meta: "High School, 2020.9–2023.6",
         edu2Desc: "Shijiazhuang, Hebei, China.",
@@ -860,9 +919,16 @@
         edu0Title: "中国科学院自動化研究所",
         edu0Meta: "パターン認識・知能システム 博士課程，2027年入学予定",
         edu0Desc: "マルチモーダル人工知能システム国家重点実験室",
+        edu0AdvisorLabel: "研究グループ・指導教員",
+        palName: "PAL グループ",
+        chenglinName: "劉 成林 教授",
         edu1Title: "大連理工大学",
         edu1Meta: "デジタルメディア技術 工学学士課程，2023.9–2027.6",
         edu1Desc: "国際情報ソフトウェア学院",
+        edu1AdvisorLabel: "研究グループ・指導者",
+        vlogName: "VLOG グループ",
+        rishengName: "劉 日升 教授",
+        zhuLiuName: "劉 鋳 博士",
         edu2Title: "河北省石家荘市 石家荘第一中学校（東校区）",
         edu2Meta: "高校，2020.9–2023.6",
         edu2Desc: "中国河北省石家荘市",
@@ -915,9 +981,16 @@
       document.getElementById("edu0-title").textContent = t.edu0Title;
       document.getElementById("edu0-meta").textContent = t.edu0Meta;
       document.getElementById("edu0-desc").textContent = t.edu0Desc;
+      document.getElementById("edu0-advisor-label").textContent = t.edu0AdvisorLabel;
+      document.getElementById("pal-link").textContent = t.palName;
+      document.getElementById("chenglin-link").textContent = t.chenglinName;
       document.getElementById("edu1-title").innerHTML = t.edu1Title;
       document.getElementById("edu1-meta").innerHTML = t.edu1Meta;
       document.getElementById("edu1-desc").innerHTML = t.edu1Desc;
+      document.getElementById("edu1-advisor-label").textContent = t.edu1AdvisorLabel;
+      document.getElementById("vlog-link").textContent = t.vlogName;
+      document.getElementById("risheng-link").textContent = t.rishengName;
+      document.getElementById("zhuliu-link").textContent = t.zhuLiuName;
       document.getElementById("edu2-title").innerHTML = t.edu2Title;
       document.getElementById("edu2-meta").innerHTML = t.edu2Meta;
       document.getElementById("edu2-desc").innerHTML = t.edu2Desc;
@@ -927,6 +1000,8 @@
 
       document.documentElement.lang = lang === "jp" ? "ja" : lang;
     }
+
+    setLang("zh");
   </script>
 </body>
 </html>
