@@ -224,6 +224,10 @@
       font-size: 14px;
     }
 
+    .photo-album + .photo-album {
+      margin-top: 54px;
+    }
+
     .lightbox {
       position: fixed;
       inset: 0;
@@ -373,13 +377,9 @@
     <section class="content-section" id="photography">
       <div class="section-head">
         <h2>摄影作品</h2>
-        <p class="section-note">Photography · 40 photos</p>
+        <p class="section-note">Photography · 69 photos</p>
       </div>
-      <div class="album-intro">
-        <h3>粤港澳</h3>
-        <p>城市、海岸与旅途片段</p>
-      </div>
-      <div class="photo-grid" id="photo-grid"></div>
+      <div id="photo-albums"></div>
     </section>
 
     <section class="content-section" id="journeys">
@@ -399,30 +399,55 @@
   </div>
 
   <script>
-    // 后续可在这里添加摄影作品：{ image, alt }
-    const photos = Array.from({ length: 40 }, (_, index) => {
-      const number = String(index + 1).padStart(2, "0");
-      return {
-        image: `assets/photos/greater-bay-area/${number}.webp`,
-        alt: `粤港澳摄影作品 ${number}`,
-      };
-    });
+    const albumData = [
+      {
+        title: "粤港澳",
+        description: "城市、海岸与旅途片段",
+        folder: "greater-bay-area",
+        count: 40,
+      },
+      {
+        title: "日出",
+        description: "晨光抵达之前与之后",
+        folder: "sunrise",
+        count: 17,
+      },
+      {
+        title: "城市漫游",
+        description: "街道、建筑与异地风景",
+        folder: "collection",
+        count: 12,
+      },
+    ];
 
     // 后续可在这里添加旅行日记：{ title, date, summary, href }
     const journeys = [];
 
-    const photoGrid = document.getElementById("photo-grid");
+    const photoAlbums = document.getElementById("photo-albums");
     const journalList = document.getElementById("journal-list");
 
-    if (photos.length === 0) {
-      photoGrid.innerHTML = '<div class="empty-state"><div><strong>作品整理中</strong>摄影作品将在这里陆续更新。</div></div>';
-    } else {
-      photoGrid.innerHTML = photos.map(photo => `
-        <button class="photo-card" type="button" data-image="${photo.image}" data-alt="${photo.alt}">
-          <img src="${photo.image}" alt="${photo.alt}" loading="lazy" />
-        </button>
-      `).join("");
-    }
+    photoAlbums.innerHTML = albumData.map(album => {
+      const photos = Array.from({ length: album.count }, (_, index) => {
+        const number = String(index + 1).padStart(2, "0");
+        const image = `assets/photos/${album.folder}/${number}.webp`;
+        const alt = `${album.title}摄影作品 ${number}`;
+        return `
+          <button class="photo-card" type="button" data-image="${image}" data-alt="${alt}">
+            <img src="${image}" alt="${alt}" loading="lazy" />
+          </button>
+        `;
+      }).join("");
+
+      return `
+        <section class="photo-album" aria-label="${album.title}">
+          <div class="album-intro">
+            <h3>${album.title}</h3>
+            <p>${album.description} · ${album.count} 张</p>
+          </div>
+          <div class="photo-grid">${photos}</div>
+        </section>
+      `;
+    }).join("");
 
     const lightbox = document.getElementById("lightbox");
     const lightboxImage = document.getElementById("lightbox-image");
@@ -432,7 +457,7 @@
       document.body.style.overflow = "";
     };
 
-    photoGrid.addEventListener("click", event => {
+    photoAlbums.addEventListener("click", event => {
       const card = event.target.closest(".photo-card");
       if (!card) return;
       lightboxImage.src = card.dataset.image;
