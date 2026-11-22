@@ -161,41 +161,100 @@
     }
 
     .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      columns: 3;
+      column-gap: 18px;
     }
 
     .photo-card {
+      width: 100%;
+      margin: 0 0 18px;
+      padding: 0;
       overflow: hidden;
       border: 1px solid var(--border);
       border-radius: 18px;
       background: #fff;
+      break-inside: avoid;
+      cursor: zoom-in;
+      font: inherit;
+      text-align: left;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .photo-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
     }
 
     .photo-card img {
       display: block;
       width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
+      height: auto;
     }
 
-    .photo-caption {
-      padding: 14px 16px 16px;
-    }
-
-    .photo-caption h3,
     .journal-card h3 {
       margin: 0;
       color: var(--ink);
       font-size: 17px;
     }
 
-    .photo-caption p,
     .journal-card p {
       margin: 5px 0 0;
       color: var(--muted);
       font-size: 14px;
+    }
+
+    .album-intro {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 18px;
+      padding: 18px 20px;
+      border-left: 3px solid var(--accent);
+      background: rgba(255, 255, 255, 0.58);
+    }
+
+    .album-intro h3,
+    .album-intro p {
+      margin: 0;
+    }
+
+    .album-intro p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: none;
+      place-items: center;
+      padding: 28px;
+      background: rgba(7, 16, 20, 0.92);
+    }
+
+    .lightbox.is-open {
+      display: grid;
+    }
+
+    .lightbox img {
+      max-width: min(96vw, 1600px);
+      max-height: 88vh;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 18px;
+      right: 22px;
+      border: 0;
+      background: transparent;
+      color: #fff;
+      cursor: pointer;
+      font-size: 34px;
+      line-height: 1;
     }
 
     .journal-list {
@@ -262,7 +321,7 @@
       }
 
       .photo-grid {
-        grid-template-columns: 1fr;
+        columns: 1;
       }
 
       .journal-card {
@@ -274,6 +333,12 @@
         align-items: start;
         flex-direction: column;
         gap: 5px;
+      }
+
+      .album-intro {
+        align-items: start;
+        flex-direction: column;
+        gap: 4px;
       }
 
       .top-links a:not(.back-link) {
@@ -308,7 +373,11 @@
     <section class="content-section" id="photography">
       <div class="section-head">
         <h2>摄影作品</h2>
-        <p class="section-note">Photography</p>
+        <p class="section-note">Photography · 40 photos</p>
+      </div>
+      <div class="album-intro">
+        <h3>粤港澳</h3>
+        <p>城市、海岸与旅途片段</p>
       </div>
       <div class="photo-grid" id="photo-grid"></div>
     </section>
@@ -324,9 +393,20 @@
 
   <footer>© 2026 Qilong Zhao · Photography &amp; Travel</footer>
 
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="照片预览">
+    <button class="lightbox-close" id="lightbox-close" type="button" aria-label="关闭预览">×</button>
+    <img id="lightbox-image" src="" alt="" />
+  </div>
+
   <script>
-    // 后续可在这里添加摄影作品：{ title, location, date, image, alt }
-    const photos = [];
+    // 后续可在这里添加摄影作品：{ image, alt }
+    const photos = Array.from({ length: 40 }, (_, index) => {
+      const number = String(index + 1).padStart(2, "0");
+      return {
+        image: `assets/photos/greater-bay-area/${number}.webp`,
+        alt: `粤港澳摄影作品 ${number}`,
+      };
+    });
 
     // 后续可在这里添加旅行日记：{ title, date, summary, href }
     const journeys = [];
@@ -338,15 +418,36 @@
       photoGrid.innerHTML = '<div class="empty-state"><div><strong>作品整理中</strong>摄影作品将在这里陆续更新。</div></div>';
     } else {
       photoGrid.innerHTML = photos.map(photo => `
-        <article class="photo-card">
+        <button class="photo-card" type="button" data-image="${photo.image}" data-alt="${photo.alt}">
           <img src="${photo.image}" alt="${photo.alt}" loading="lazy" />
-          <div class="photo-caption">
-            <h3>${photo.title}</h3>
-            <p>${photo.location} · ${photo.date}</p>
-          </div>
-        </article>
+        </button>
       `).join("");
     }
+
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightbox-image");
+    const closeLightbox = () => {
+      lightbox.classList.remove("is-open");
+      lightboxImage.src = "";
+      document.body.style.overflow = "";
+    };
+
+    photoGrid.addEventListener("click", event => {
+      const card = event.target.closest(".photo-card");
+      if (!card) return;
+      lightboxImage.src = card.dataset.image;
+      lightboxImage.alt = card.dataset.alt;
+      lightbox.classList.add("is-open");
+      document.body.style.overflow = "hidden";
+    });
+
+    document.getElementById("lightbox-close").addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", event => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeLightbox();
+    });
 
     if (journeys.length === 0) {
       journalList.innerHTML = '<div class="empty-state"><div><strong>旅途待续</strong>旅行日记将在这里陆续更新。</div></div>';
