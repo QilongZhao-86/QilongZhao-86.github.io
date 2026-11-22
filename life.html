@@ -172,12 +172,11 @@
       font-size: 14px;
     }
 
-    .music-card iframe {
+    .music-card audio {
       display: block;
       width: 100%;
-      height: 152px;
-      border: 0;
-      border-radius: 12px;
+      min-height: 54px;
+      accent-color: var(--primary);
     }
 
     .section-head {
@@ -426,12 +425,10 @@
         <h2 id="music-title">Hong Kong</h2>
         <p class="music-artist">The Weeknd · feat. 王菲季候風</p>
       </div>
-      <iframe
-        src="https://open.spotify.com/embed/track/1824ElVTa8XiWOjOlujl81?utm_source=generator&amp;theme=0"
-        title="Spotify player: Hong Kong by The Weeknd"
-        loading="lazy"
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-      ></iframe>
+      <audio controls preload="metadata" aria-label="播放 The Weeknd 的 Hong Kong">
+        <source src="assets/audio/hong-kong.mp3" type="audio/mpeg" />
+        你的浏览器不支持音频播放。
+      </audio>
     </section>
 
     <section class="content-section" id="photography">
