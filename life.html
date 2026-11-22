@@ -140,6 +140,46 @@
       margin-top: 56px;
     }
 
+    .music-card {
+      display: grid;
+      grid-template-columns: minmax(180px, 0.55fr) minmax(0, 1.45fr);
+      align-items: center;
+      gap: 28px;
+      margin-top: 28px;
+      padding: 22px 24px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: 0 12px 34px rgba(15, 63, 80, 0.07);
+    }
+
+    .music-kicker {
+      margin: 0 0 4px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .music-card h2 {
+      font-size: 22px;
+    }
+
+    .music-artist {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .music-card iframe {
+      display: block;
+      width: 100%;
+      height: 152px;
+      border: 0;
+      border-radius: 12px;
+    }
+
     .section-head {
       display: flex;
       align-items: end;
@@ -320,6 +360,12 @@
         padding: 30px 24px;
       }
 
+      .music-card {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 20px;
+      }
+
       .hero-mark {
         display: none;
       }
@@ -372,6 +418,20 @@
         <p class="hero-copy">记录光影、旅途，以及在路上的所见所想。这里将陆续收录摄影作品、城市漫步和旅行日记。</p>
       </div>
       <div class="hero-mark" aria-hidden="true">◉</div>
+    </section>
+
+    <section class="music-card" aria-labelledby="music-title">
+      <div>
+        <p class="music-kicker">Now Playing</p>
+        <h2 id="music-title">Hong Kong</h2>
+        <p class="music-artist">The Weeknd · feat. 王菲季候風</p>
+      </div>
+      <iframe
+        src="https://open.spotify.com/embed/track/1824ElVTa8XiWOjOlujl81?utm_source=generator&amp;theme=0"
+        title="Spotify player: Hong Kong by The Weeknd"
+        loading="lazy"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      ></iframe>
     </section>
 
     <section class="content-section" id="photography">
