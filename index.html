@@ -391,8 +391,7 @@
       color: #333;
     }
 
-    .pub,
-    .news-card {
+    .pub {
       padding: 14px 16px;
       background: var(--light-bg);
       border: 1px solid var(--border);
@@ -400,17 +399,91 @@
       margin-bottom: 14px;
     }
 
-    .pub-title,
-    .news-title {
+    .pub-title {
       font-weight: 700;
       color: #111;
     }
 
     .pub-authors,
-    .pub-venue,
-    .news-meta {
+    .pub-venue {
       color: var(--muted);
       font-size: 14px;
+    }
+
+    .news-list {
+      display: grid;
+      gap: 0;
+    }
+
+    .news-item {
+      display: grid;
+      grid-template-columns: 92px minmax(0, 1fr);
+      gap: 20px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .news-item:first-child {
+      padding-top: 2px;
+    }
+
+    .news-item:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .news-date {
+      color: var(--primary);
+      font-size: 14px;
+      font-weight: 750;
+      letter-spacing: 0.02em;
+    }
+
+    .news-title {
+      margin-bottom: 5px;
+      color: #111;
+      font-weight: 700;
+    }
+
+    .news-content .item-desc {
+      color: var(--muted);
+    }
+
+    .life-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 24px;
+      padding: 22px 24px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: linear-gradient(135deg, #f2f8f9, #fffaf1);
+      color: inherit;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .life-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+      text-decoration: none;
+    }
+
+    .life-card-title {
+      margin: 0 0 5px;
+      color: var(--primary-dark);
+      font-size: 18px;
+      font-weight: 750;
+    }
+
+    .life-card-desc {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .life-card-mark {
+      color: var(--accent);
+      font-size: 28px;
+      letter-spacing: 0.12em;
     }
 
     .link-row {
@@ -420,26 +493,6 @@
       margin-top: 10px;
       font-size: 14px;
     }
-
-    .overview-box,
-    .news-media-box {
-      margin-top: 14px;
-      border: 1px dashed var(--border);
-      background: #fff;
-      border-radius: 12px;
-      padding: 12px;
-    }
-
-    .overview-img,
-    .news-img {
-      display: block;
-      width: 100%;
-      max-height: 360px;
-      object-fit: contain;
-      border-radius: 8px;
-      background: var(--light-bg);
-    }
-
 
     .footer {
       text-align: center;
@@ -501,6 +554,19 @@
         height: 62px;
         left: 4px;
       }
+
+      .news-item {
+        grid-template-columns: 1fr;
+        gap: 6px;
+      }
+
+      .life-card {
+        grid-template-columns: 1fr;
+      }
+
+      .life-card-mark {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -513,10 +579,10 @@
       <nav class="nav-links">
         <a href="#about" id="nav-about">About</a>
         <a href="#research" id="nav-research">Research</a>
-        <a href="#projects" id="nav-projects">Projects</a>
         <a href="#publications" id="nav-publications">Publications</a>
         <a href="#news" id="nav-news">News</a>
         <a href="#education" id="nav-education">Education</a>
+        <a href="life.html" id="nav-life">Photography &amp; Travel</a>
         <a href="#contact" id="nav-contact">Contact</a>
 
         <div class="lang-group">
@@ -584,35 +650,6 @@
         </div>
       </section>
 
-      <section class="section" id="projects">
-        <h2 class="section-title" id="projects-title">Selected Project</h2>
-
-        <div class="item">
-          <div class="item-title" id="project1-title">
-            Bridging the Thermal Gap: Data-Model Collaborative Transfer for Infrared Perception
-          </div>
-          <div class="item-meta" id="project1-meta">
-            Infrared Vision / Data–Model Collaborative Transfer / Foundation Model Adaptation
-          </div>
-          <p class="item-desc" id="project1-desc">
-            DMCT jointly learns task-responsive infrared data generation and thermal-aware model transfer. It combines formation-guided representations with lightweight adapters and is validated on infrared image enhancement, depth estimation, small-target detection, and semantic segmentation.
-          </p>
-
-          <div class="link-row">
-            <a id="project1-arxiv" href="https://ieeexplore.ieee.org/abstract/document/11803110" target="_blank" rel="noopener noreferrer">
-              IEEE Xplore
-            </a>
-            <a href="https://github.com/QilongZhao-86/DMCT_InfraredVision" target="_blank" rel="noopener noreferrer">
-              Code
-            </a>
-          </div>
-
-          <div class="overview-box">
-            <img id="project1-overview-img" class="overview-img" src="assets/dapef_overview.png" alt="Overview of data-model collaborative transfer for infrared perception" />
-          </div>
-        </div>
-      </section>
-
       <section class="section" id="publications">
         <h2 class="section-title" id="publications-title">Publications / Preprints</h2>
 
@@ -643,27 +680,41 @@
       <section class="section" id="news">
         <h2 class="section-title" id="news-title">News</h2>
 
-        <div class="news-card">
-          <div class="news-meta" id="news1-date">2026</div>
+        <div class="news-list">
+          <article class="news-item">
+            <div class="news-date" id="news1-date">2026.11</div>
+            <div class="news-content">
+              <div class="news-title" id="news1-title">Our DMCT paper is available online in IEEE TPAMI.</div>
+              <p class="item-desc" id="news1-desc">The paper studies data–model collaborative transfer for robust infrared visual perception.</p>
+              <div class="link-row">
+                <a href="https://ieeexplore.ieee.org/abstract/document/11803110" target="_blank" rel="noopener noreferrer">IEEE Xplore</a>
+                <a href="https://github.com/QilongZhao-86/DMCT_InfraredVision" target="_blank" rel="noopener noreferrer">Code</a>
+              </div>
+            </div>
+          </article>
 
-          <div class="news-title" id="news1-title">
-            Awarded Finalist in the 2026 MCM/ICM.
-          </div>
-
-          <p class="item-desc" id="news1-desc">
-            Our team received the Finalist Award in the 2026 Mathematical Contest in Modeling / Interdisciplinary Contest in Modeling.
-          </p>
-
-          <div class="link-row">
-            <a id="news1-paper-link" href="paper/mcm_icm_2026.pdf" target="_blank">
-              Paper
-            </a>
-          </div>
-
-          <div class="news-media-box">
-            <img id="news1-award-img" class="news-img" src="assets/mcm_icm_2026_award.jpg" alt="2026 MCM/ICM award photo" />
-          </div>
+          <article class="news-item">
+            <div class="news-date" id="news2-date">2026</div>
+            <div class="news-content">
+              <div class="news-title" id="news2-title">Awarded Finalist in the 2026 MCM/ICM.</div>
+              <p class="item-desc" id="news2-desc">Our team received the Finalist Award in the Mathematical Contest in Modeling / Interdisciplinary Contest in Modeling.</p>
+              <div class="link-row">
+                <a href="paper/mcm_icm_2026.pdf" target="_blank" rel="noopener noreferrer">Paper</a>
+              </div>
+            </div>
+          </article>
         </div>
+      </section>
+
+      <section class="section" id="life">
+        <h2 class="section-title" id="life-title">Beyond Research</h2>
+        <a class="life-card" href="life.html">
+          <div>
+            <h3 class="life-card-title" id="life-card-title">Photography &amp; Travel</h3>
+            <p class="life-card-desc" id="life-card-desc">A place for photographs, journeys, and notes from the road.</p>
+          </div>
+          <span class="life-card-mark" aria-hidden="true">◉ ✦</span>
+        </a>
       </section>
 
       <section class="section" id="education">
@@ -739,7 +790,7 @@
   </main>
 
   <footer class="footer">
-    © 2026 Qilong Zhao. Last updated: September 2026.
+    © 2026 Qilong Zhao. Last updated: November 2026.
   </footer>
 
   <script>
@@ -751,10 +802,10 @@
 
         navAbout: "关于我",
         navResearch: "研究方向",
-        navProjects: "代表项目",
         navPublications: "论文",
         navNews: "新闻",
         navEducation: "教育经历",
+        navLife: "摄影与旅行",
         navContact: "联系",
 
         aboutTitle: "关于我",
@@ -770,26 +821,24 @@
           "具身智能",
         ],
 
-        projectsTitle: "代表项目",
-        project1Title: "Bridging the Thermal Gap: Data-Model Collaborative Transfer for Infrared Perception",
-        project1Meta: "红外视觉 / 数据—模型协同迁移 / 基础模型适配",
-        project1Desc:
-          "DMCT 将任务响应式红外数据生成与热感知模型迁移进行协同学习，结合成像机理引导的表征和轻量级适配器，并在红外图像增强、深度估计、小目标检测与语义分割四类任务上完成验证。",
-        project1OverviewNote:
-          "概览图接口：将 assets/dapef_overview.png 替换为最终的项目概览图即可。",
-
-        publicationsTitle: "论文 / 预印本",
+        publicationsTitle: "论文",
         pub1Title: "Bridging the Thermal Gap: Data-Model Collaborative Transfer for Infrared Perception",
         pub1Authors: "Zhu Liu, <strong>Qilong Zhao</strong>, Zhirui Fang, Benzhuang Zhang, Jinyuan Liu, Risheng Liu",
         pub1Venue: "IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI), 2026 (Early Access).",
 
         newsTitle: "新闻",
-        news1Date: "2026",
-        news1Title: "获得 2026 年 MCM/ICM Finalist Award（F 奖）。",
+        news1Date: "2026.11",
+        news1Title: "DMCT 论文已在 IEEE TPAMI 上线。",
         news1Desc:
-          "我们的团队在 2026 年美国大学生数学建模竞赛 / 交叉学科建模竞赛中获得 Finalist Award。",
-        news1AwardNote:
-          "获奖照片接口：将 assets/mcm_icm_2026_award.jpg 替换为最终获奖照片；论文链接可修改为 paper/mcm_icm_2026.pdf。",
+          "该工作研究面向稳健红外视觉感知的数据—模型协同迁移方法。",
+        news2Date: "2026",
+        news2Title: "获得 2026 年 MCM/ICM Finalist Award（F 奖）。",
+        news2Desc:
+          "我们的团队在美国大学生数学建模竞赛 / 交叉学科建模竞赛中获得 Finalist Award。",
+
+        lifeTitle: "科研之外",
+        lifeCardTitle: "摄影与旅行",
+        lifeCardDesc: "记录光影、旅途，以及在路上的所见所想。",
 
         educationTitle: "教育经历",
         edu0Title: "中国科学院自动化研究所",
@@ -820,10 +869,10 @@
 
         navAbout: "About",
         navResearch: "Research",
-        navProjects: "Project",
         navPublications: "Publications",
         navNews: "News",
         navEducation: "Education",
+        navLife: "Photography & Travel",
         navContact: "Contact",
 
         aboutTitle: "About Me",
@@ -839,22 +888,24 @@
           "Embodied AI",
         ],
 
-        projectsTitle: "Selected Project",
-        project1Title: "Bridging the Thermal Gap: Data-Model Collaborative Transfer for Infrared Perception",
-        project1Meta: "Infrared Vision / Data–Model Collaborative Transfer / Foundation Model Adaptation",
-        project1Desc:
-          "DMCT jointly learns task-responsive infrared data generation and thermal-aware model transfer. It combines formation-guided representations with lightweight adapters and is validated on infrared image enhancement, depth estimation, small-target detection, and semantic segmentation.",
-
-        publicationsTitle: "Publications / Preprints",
+        publicationsTitle: "Publications",
         pub1Title: "Bridging the Thermal Gap: Data-Model Collaborative Transfer for Infrared Perception",
         pub1Authors: "Zhu Liu, <strong>Qilong Zhao</strong>, Zhirui Fang, Benzhuang Zhang, Jinyuan Liu, Risheng Liu",
         pub1Venue: "IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI), 2026 (Early Access).",
 
         newsTitle: "News",
-        news1Date: "2026",
-        news1Title: "Awarded Finalist in the 2026 MCM/ICM.",
+        news1Date: "2026.11",
+        news1Title: "Our DMCT paper is available online in IEEE TPAMI.",
         news1Desc:
-          "Our team received the Finalist Award in the 2026 Mathematical Contest in Modeling / Interdisciplinary Contest in Modeling.",
+          "The work studies data–model collaborative transfer for robust infrared visual perception.",
+        news2Date: "2026",
+        news2Title: "Awarded Finalist in the 2026 MCM/ICM.",
+        news2Desc:
+          "Our team received the Finalist Award in the Mathematical Contest in Modeling / Interdisciplinary Contest in Modeling.",
+
+        lifeTitle: "Beyond Research",
+        lifeCardTitle: "Photography & Travel",
+        lifeCardDesc: "A place for photographs, journeys, and notes from the road.",
 
         educationTitle: "Education",
         edu0Title: "Institute of Automation, Chinese Academy of Sciences",
@@ -885,10 +936,10 @@
 
         navAbout: "自己紹介",
         navResearch: "研究分野",
-        navProjects: "代表プロジェクト",
         navPublications: "論文",
         navNews: "ニュース",
         navEducation: "学歴",
+        navLife: "写真と旅",
         navContact: "連絡先",
 
         aboutTitle: "自己紹介",
@@ -904,22 +955,24 @@
           "エンボディドAI",
         ],
 
-        projectsTitle: "代表プロジェクト",
-        project1Title: "Bridging the Thermal Gap: Data-Model Collaborative Transfer for Infrared Perception",
-        project1Meta: "赤外線視覚 / データ・モデル協調転移 / 基盤モデル適応",
-        project1Desc:
-          "DMCTは、タスク応答型の赤外線データ生成と熱特性を考慮したモデル転移を協調的に学習します。撮像形成に基づく表現と軽量アダプタを組み合わせ、赤外線画像強調、深度推定、小目標検出、セマンティックセグメンテーションの4タスクで検証しています。",
-
-        publicationsTitle: "論文 / プレプリント",
+        publicationsTitle: "論文",
         pub1Title: "Bridging the Thermal Gap: Data-Model Collaborative Transfer for Infrared Perception",
         pub1Authors: "Zhu Liu, <strong>Qilong Zhao</strong>, Zhirui Fang, Benzhuang Zhang, Jinyuan Liu, Risheng Liu",
         pub1Venue: "IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI), 2026 (Early Access).",
 
         newsTitle: "ニュース",
-        news1Date: "2026",
-        news1Title: "2026年 MCM/ICM において Finalist Award を受賞。",
+        news1Date: "2026.11",
+        news1Title: "DMCT論文がIEEE TPAMIでオンライン公開されました。",
         news1Desc:
-          "私たちのチームは、2026年の Mathematical Contest in Modeling / Interdisciplinary Contest in Modeling において Finalist Award を受賞しました。",
+          "本研究は、堅牢な赤外線視覚認識のためのデータ・モデル協調転移を扱います。",
+        news2Date: "2026",
+        news2Title: "2026年 MCM/ICM において Finalist Award を受賞。",
+        news2Desc:
+          "私たちのチームは Mathematical Contest in Modeling / Interdisciplinary Contest in Modeling において Finalist Award を受賞しました。",
+
+        lifeTitle: "研究以外",
+        lifeCardTitle: "写真と旅",
+        lifeCardDesc: "写真、旅、そして道中で出会った風景や考えを記録します。",
 
         educationTitle: "学歴",
         edu0Title: "中国科学院自動化研究所",
@@ -953,10 +1006,10 @@
 
       document.getElementById("nav-about").innerHTML = t.navAbout;
       document.getElementById("nav-research").innerHTML = t.navResearch;
-      document.getElementById("nav-projects").innerHTML = t.navProjects;
       document.getElementById("nav-publications").innerHTML = t.navPublications;
       document.getElementById("nav-news").innerHTML = t.navNews;
       document.getElementById("nav-education").innerHTML = t.navEducation;
+      document.getElementById("nav-life").innerHTML = t.navLife;
       document.getElementById("nav-contact").innerHTML = t.navContact;
 
       document.getElementById("about-title").innerHTML = t.aboutTitle;
@@ -968,11 +1021,6 @@
         .map(tag => `<span class="tag">${tag}</span>`)
         .join("");
 
-      document.getElementById("projects-title").innerHTML = t.projectsTitle;
-      document.getElementById("project1-title").innerHTML = t.project1Title;
-      document.getElementById("project1-meta").innerHTML = t.project1Meta;
-      document.getElementById("project1-desc").innerHTML = t.project1Desc;
-
       document.getElementById("publications-title").innerHTML = t.publicationsTitle;
       document.getElementById("pub1-title").innerHTML = t.pub1Title;
       document.getElementById("pub1-authors").innerHTML = t.pub1Authors;
@@ -982,6 +1030,13 @@
       document.getElementById("news1-date").innerHTML = t.news1Date;
       document.getElementById("news1-title").innerHTML = t.news1Title;
       document.getElementById("news1-desc").innerHTML = t.news1Desc;
+      document.getElementById("news2-date").innerHTML = t.news2Date;
+      document.getElementById("news2-title").innerHTML = t.news2Title;
+      document.getElementById("news2-desc").innerHTML = t.news2Desc;
+
+      document.getElementById("life-title").innerHTML = t.lifeTitle;
+      document.getElementById("life-card-title").innerHTML = t.lifeCardTitle;
+      document.getElementById("life-card-desc").innerHTML = t.lifeCardDesc;
 
       document.getElementById("education-title").innerHTML = t.educationTitle;
       document.getElementById("edu0-title").textContent = t.edu0Title;
